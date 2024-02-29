@@ -10,10 +10,15 @@ class BaseConfig:
         self._settings: Settings = DEFAULT_SETTINGS.copy()
         self.encoding = self.settings["encoding"]
         self._path: Path | None = None
+        self._settings_from_configs: Settings = {}
 
     @property
     def settings(self) -> Settings:
         return self._settings
+
+    @property
+    def mutated_settings(self) -> Settings:
+        return self._settings_from_configs
 
     @property
     def path(self) -> Path | None:

@@ -293,7 +293,9 @@ class Bump:
                         "unreleased_version": new_tag_version,
                         "template": self.template,
                         "extras": self.extras,
-                        "incremental": True,
+                        "incremental": self.config.mutated_settings.get(
+                            "changelog_incremental", True
+                        ),
                         "dry_run": True,
                     },
                 )
@@ -305,7 +307,9 @@ class Bump:
                 self.config,
                 {
                     "unreleased_version": new_tag_version,
-                    "incremental": True,
+                    "incremental": self.config.mutated_settings.get(
+                        "changelog_incremental", True
+                    ),
                     "dry_run": dry_run,
                     "template": self.template,
                     "extras": self.extras,
